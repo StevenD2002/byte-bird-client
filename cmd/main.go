@@ -117,11 +117,6 @@ func registerUser(token *string) {
 		fmt.Printf("Registration failed. Status code: %d\n", resp.StatusCode)
 		return
 	}
-	// check the response status code
-	if resp.StatusCode != http.StatusOK {
-		fmt.Printf("Login failed. Status code: %d\n", resp.StatusCode)
-		return
-	}
 
 	// parse the token from the json response
 	var data map[string]interface{}
@@ -196,8 +191,6 @@ func makePost(token *string) {
 		Content: promptForInput("Enter your post content:"),
 	}
 
-	// print out the token
-	fmt.Println("Your token is:", *token)
 
 	// Convert the Post struct to JSON
 	jsonData, err := json.Marshal(post)
